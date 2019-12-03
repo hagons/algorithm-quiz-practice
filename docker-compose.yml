@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  node8:
+    container_name: node8
+    # image: node:8.11
+    build: .
+    volumes:
+      - ./src:/usr/app/src
+      # only cmd working!
+    ports:
+      - 8000:8000
+    working_dir: /usr/app
+    command: npm start

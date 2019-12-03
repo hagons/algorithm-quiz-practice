@@ -1,0 +1,24 @@
+{
+  "name": "algorithm-quiz-practice",
+  "version": "1.0.0",
+  "description": "최소한 일주일에 한번 알고리즘 문제를 풀어 봅시다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "start": "nodemon -L --exec \"npm run jest\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hagons/algorithm-quiz-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hagons/algorithm-quiz-practice/issues"
+  },
+  "homepage": "https://github.com/hagons/algorithm-quiz-practice#readme",
+  "dependencies": {
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.1"
+  }
+}
