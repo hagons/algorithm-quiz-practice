@@ -4,8 +4,7 @@
   "description": "최소한 일주일에 한번 알고리즘 문제를 풀어 봅시다.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
-    "start": "nodemon -L --exec \"npm run jest\""
+    "start": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -17,8 +16,10 @@
     "url": "https://github.com/hagons/algorithm-quiz-practice/issues"
   },
   "homepage": "https://github.com/hagons/algorithm-quiz-practice#readme",
-  "dependencies": {
-    "jest": "^24.9.0",
-    "nodemon": "^2.0.1"
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^24.9.0"
   }
 }
