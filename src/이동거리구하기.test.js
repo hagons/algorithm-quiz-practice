@@ -8,8 +8,8 @@ function solution(data) {
   //   .map(() => Array(gridNum[1]).fill(0));
 
   function factorial(n) {
-    var result = 1;
-    for (var i = 2; i <= n; i++) result *= i;
+    let result = 1;
+    for (let i = 2; i <= n; i++) result *= i;
     return result;
   }
 

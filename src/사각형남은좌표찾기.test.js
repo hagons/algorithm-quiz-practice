@@ -30,5 +30,11 @@ function solution(v) {
 }
 
 test('It will return.', () => {
-  expect(solution([[1, 2], [2, 4], [2, 2]])).toEqual([1, 4]);
+  expect(
+    solution([
+      [1, 2],
+      [2, 4],
+      [2, 2]
+    ])
+  ).toEqual([1, 4]);
 });
