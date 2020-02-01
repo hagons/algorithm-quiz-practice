@@ -1,9 +1,8 @@
-FROM node:8.11
+FROM node:12.14
 
 WORKDIR /usr/app
 
-COPY package*.json ./
+COPY package.json /usr/app
 RUN npm install
 
-EXPOSE 8000
 CMD ["npm", "start"]
