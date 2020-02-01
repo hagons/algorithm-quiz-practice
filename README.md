@@ -17,3 +17,10 @@ $ docker-compose up -d
 
 - vscode
 - vscode extention. jest
+
+### cli 환경에서 실행
+
+```shell
+$ npm install
+$ npm start
+```
