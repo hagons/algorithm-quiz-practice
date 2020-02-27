@@ -4,8 +4,9 @@ function main(...obj) {
   number = number ? number : '0';
   padBy = padBy ? padBy : ',';
   padHow = padHow ? padHow : 3;
-
-  if (isNaN(padHow)) return String(number);
+  if (isNaN(padHow)) {
+    padHow = 3;
+  }
   if (isNaN(number)) return '0';
 
   const getPadBy = String(padBy);
@@ -49,7 +50,7 @@ test('It will return.', () => {
   expect(main({ number: 10000000, padBy: ' ', padHow: 4 })).toEqual(
     '1000 0000'
   );
-  expect(main({ number: 10000000, padHow: 'a' })).toEqual('10000000');
+  expect(main({ number: 10000000, padHow: 'a' })).toEqual('10,000,000');
   expect(main({ number: '1000' })).toEqual('1,000');
   expect(main({ number: -1000 })).toEqual('-1,000');
   expect(main({ number: '-1000' })).toEqual('-1,000');
