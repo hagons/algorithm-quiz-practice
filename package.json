@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "최소한 일주일에 한번 알고리즘 문제를 풀어 봅시다.",
   "scripts": {
-    "start": "jest --watchAll"
+    "start": "jest --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hagons/algorithm-quiz-practice.git"
   },
-  "author": "",
+  "author": "hagon <hagons.l@gmail.com> (https://github.com/hagons)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hagons/algorithm-quiz-practice/issues"
@@ -19,5 +19,8 @@
     "eslint": "^6.7.2",
     "eslint-config-google": "^0.14.0",
     "jest": "^24.9.0"
+  },
+  "engines": {
+    "node": ">=12.14"
   }
 }

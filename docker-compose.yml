@@ -1,9 +1,0 @@
-version: '3.7'
-
-services:
-  jest:
-    build: .
-    volumes:
-      - ./src:/usr/app/src
-    working_dir: /usr/app
-    command: npm start
