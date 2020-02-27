@@ -71,17 +71,14 @@ test('Return string with comma.', () => {
 });
 
 function mainFp({ number, padBy, padHow }) {
-  const p = new Promise((resolve, reject) => {
-    padBy = padBy ? padBy : ',';
-    padHow = padHow ? padHow : 3;
-    resolve(number);
-  });
+  padBy = padBy ? padBy : ',';
+  padHow = padHow ? padHow : 3;
   const s = v =>
     v.length - padHow >= 0
       ? [s(v.slice(0, Number('-' + padHow))), v.slice(Number('-' + padHow))]
       : v;
 
-  return p
+  return Promise.resolve(number)
     .then(p1 => String(p1))
     .then(p2 => s(p2))
     .then(p3 => p3.join(padBy))
