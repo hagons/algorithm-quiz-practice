@@ -35,8 +35,8 @@ function validate(obj) {
 function main(...obj) {
   const t = [];
   const { number, padBy, padHow, minus, len } = validate(obj);
-
   let i = 1;
+
   while (len >= i) {
     if (i === 1) {
       t.push(number.slice(Number('-' + i * padHow)));
@@ -51,11 +51,7 @@ function main(...obj) {
     i++;
   }
 
-  if (minus) {
-    return '-' + t.reverse().join(padBy);
-  } else {
-    return t.reverse().join(padBy);
-  }
+  return (minus ? '-' : '') + t.reverse().join(padBy);
 }
 
 test('It will return.', () => {
