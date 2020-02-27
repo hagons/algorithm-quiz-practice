@@ -55,5 +55,6 @@ test('It will return.', () => {
   expect(main({ number: '-1000' })).toEqual('-1,000');
   expect(main({ number: '-100000' })).toEqual('-100,000');
   expect(main({ number: 0 })).toEqual('0');
+  expect(main({ number: '0' })).toEqual('0');
   expect(main()).toEqual('0');
 });
