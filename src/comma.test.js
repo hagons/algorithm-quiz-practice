@@ -54,7 +54,7 @@ function main(...obj) {
   return (minus ? '-' : '') + t.reverse().join(padBy);
 }
 
-test('It will return.', () => {
+test('Return string with comma.', () => {
   expect(main({ number: 1000 })).toEqual('1,000');
   expect(main({ number: 10000000 })).toEqual('10,000,000');
   expect(main({ number: 10000000, padBy: ' ', padHow: 4 })).toEqual(
@@ -68,4 +68,26 @@ test('It will return.', () => {
   expect(main({ number: 0 })).toEqual('0');
   expect(main({ number: '0' })).toEqual('0');
   expect(main()).toEqual('0');
+});
+
+function mainFp({ number, padBy, padHow }) {
+  const p = new Promise((resolve, reject) => {
+    padBy = padBy ? padBy : ',';
+    padHow = padHow ? padHow : 3;
+    resolve(number);
+  });
+  const s = v =>
+    v.length - padHow >= 0
+      ? [s(v.slice(0, Number('-' + padHow))), v.slice(Number('-' + padHow))]
+      : v;
+
+  return p
+    .then(p1 => String(p1))
+    .then(p2 => s(p2))
+    .then(p3 => p3.join(padBy))
+    .catch(e => console.log(e));
+}
+
+test('fp', async () => {
+  expect(await mainFp({ number: 1000 })).toEqual('1,000');
 });
