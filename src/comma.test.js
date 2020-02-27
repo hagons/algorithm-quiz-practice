@@ -1,4 +1,5 @@
 function main({ number = 0, padBy = ',', padHow = 3 }) {
+  if (!number) return 0;
   if (isNaN(padHow)) return number;
   if (isNaN(number)) return 0;
 

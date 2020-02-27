@@ -7,19 +7,9 @@
 
 ## 준비
 
-node.js 필요
+node >=12.14
 
 ## 실행
-
-### 도커가 설치된 환경에서 실행
-
-```bash
-$ docker-compose up -d
-```
-
-### Visual studio code 환경에서 실행
-
-- Extention jest 설치
 
 ### cli 환경에서 실행
 
