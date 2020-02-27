@@ -70,21 +70,37 @@ test('Return string with comma.', () => {
   expect(main()).toEqual('0');
 });
 
-function mainFp({ number, padBy, padHow }) {
-  padBy = padBy ? padBy : ',';
-  padHow = padHow ? padHow : 3;
+function mainFp(...obj) {
+  const number = (obj[0] && obj[0].number) || 0;
+  const padBy = obj[0] && obj[0].padBy ? obj[0].padBy : ',';
+  const padHow = obj[0] && !isNaN(obj[0].padHow) ? obj[0].padHow : 3;
+  const minus = Number(number) < 0;
   const s = v =>
-    v.length - padHow >= 0
+    v.length > padHow
       ? [s(v.slice(0, Number('-' + padHow))), v.slice(Number('-' + padHow))]
       : v;
 
   return Promise.resolve(number)
     .then(p1 => String(p1))
-    .then(p2 => s(p2))
-    .then(p3 => p3.join(padBy))
-    .catch(e => console.log(e));
+    .then(p2 => (minus ? p2.replace('-', '') : p2))
+    .then(p3 => s(p3))
+    .then(p4 => p4.flat(Infinity))
+    .then(p5 => (minus ? '-' : '') + p5.join(padBy))
+    .catch(e => '0');
 }
 
 test('fp', async () => {
+  expect(await mainFp({ number: 10000000 })).toEqual('10,000,000');
   expect(await mainFp({ number: 1000 })).toEqual('1,000');
+  expect(await mainFp({ number: 10000000, padBy: ' ', padHow: 4 })).toEqual(
+    '1000 0000'
+  );
+  expect(await mainFp({ number: 10000000, padHow: 'a' })).toEqual('10,000,000');
+  expect(await mainFp({ number: '1000' })).toEqual('1,000');
+  expect(await mainFp({ number: -1000 })).toEqual('-1,000');
+  expect(await mainFp({ number: '-1000' })).toEqual('-1,000');
+  expect(await mainFp({ number: '-100000' })).toEqual('-100,000');
+  expect(await mainFp({ number: 0 })).toEqual('0');
+  expect(await mainFp({ number: '0' })).toEqual('0');
+  expect(await mainFp()).toEqual('0');
 });
