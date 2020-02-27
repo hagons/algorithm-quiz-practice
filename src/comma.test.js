@@ -1,46 +1,60 @@
-function main(...obj) {
-  if (Object.entries(obj).length === 0) return '0';
-  let { number, padBy, padHow } = obj[0];
-  number = number ? number : '0';
-  padBy = padBy ? padBy : ',';
-  padHow = padHow ? padHow : 3;
+function validate(obj) {
+  let number = obj[0] && obj[0].number ? obj[0].number : '0';
+  const padBy = obj[0] && obj[0].padBy ? obj[0].padBy : ',';
+  let padHow = obj[0] && obj[0].padHow ? obj[0].padHow : 3;
+  const minus = number < 0;
+  let len = 0;
+
   if (isNaN(padHow)) {
     padHow = 3;
   }
-  if (isNaN(number)) return '0';
-
-  const getPadBy = String(padBy);
-  const getPadHow = Number(padHow);
-  let el = String(number);
-
-  const minus = el < 0;
+  if (isNaN(number)) {
+    number = '0';
+  }
+  if (typeof number !== 'string') {
+    number = String(number);
+  }
   if (minus) {
-    el = el.replace('-', '');
+    number = number.replace('-', '');
+  }
+  if (number.length % padHow) {
+    len = number.length / padHow + 1;
+  } else {
+    len = number.length / padHow;
   }
 
-  const len = Math.floor(
-    el.length % getPadHow ? el.length / getPadHow + 1 : el.length / getPadHow
-  );
+  return {
+    number: String(number),
+    padBy: String(padBy),
+    padHow: Number(padHow),
+    minus,
+    len: Math.floor(len)
+  };
+}
+
+function main(...obj) {
   const t = [];
+  const { number, padBy, padHow, minus, len } = validate(obj);
 
   let i = 1;
   while (len >= i) {
     if (i === 1) {
-      t.push(el.slice(Number('-' + i * getPadHow)));
+      t.push(number.slice(Number('-' + i * padHow)));
     } else {
       t.push(
-        el.slice(
-          Number('-' + i * getPadHow),
-          Number('-' + (i * getPadHow - getPadHow))
+        number.slice(
+          Number('-' + i * padHow),
+          Number('-' + (i * padHow - padHow))
         )
       );
     }
     i++;
   }
+
   if (minus) {
-    return '-' + t.reverse().join(getPadBy);
+    return '-' + t.reverse().join(padBy);
   } else {
-    return t.reverse().join(getPadBy);
+    return t.reverse().join(padBy);
   }
 }
 
