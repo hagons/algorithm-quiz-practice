@@ -11,16 +11,15 @@ node.js 필요
 
 ## 실행
 
-### 도커가 설치된 환경에서 실행.
+### 도커가 설치된 환경에서 실행
 
 ```bash
 $ docker-compose up -d
 ```
 
-### 도커 설치 안된 환경에서 실행
+### Visual studio code 환경에서 실행
 
-- vscode
-- vscode extention. jest
+- Extention jest 설치
 
 ### cli 환경에서 실행
 
