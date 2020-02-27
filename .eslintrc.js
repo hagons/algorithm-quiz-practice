@@ -17,6 +17,7 @@ module.exports = {
     'require-jsdoc': 0,
     'arrow-parens': 0,
     'comma-dangle': 0,
-    'linebreak-style': 0
+    'linebreak-style': 0,
+    'object-curly-spacing': 0
   }
 };
